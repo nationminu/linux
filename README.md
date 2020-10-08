@@ -102,16 +102,22 @@ http://mirror.kakao.com/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-DVD-2003.iso
 ## 온라인 테스트 환경
 https://www.katacoda.com/courses/ubuntu/playground
 
+### whoami
+현재 접속한 유저의 정보를 출력하는 명령어
+```
+$ whoami
+root
+```
+
 ### pwd(print working directory)
-현재 위치중인 디렉토리 출력
+현재 위치중인 디렉토리 출력하는 명령어
 ```
 $ pwd
 /root
 ```
 
 ### mkdir (make directory)
-디렉토리 생성, -p 옵션을 주면 하위 디렉토리까지 생성
-절대 경로와 상대 경로의 사용 가능
+디렉토리를 생성하는 명령어, -p 옵션을 주면 하위 디렉토리까지 생성한다. 절대 경로와 상대 경로의 사용 가능이 가능하다.
 ```
 $ mkdir /root/mydir
 $ ls
@@ -130,7 +136,7 @@ mydir  test1  test10  test2  test3  test4  test5  test6  test7  test8  test9  te
 ```
 
 ### cd(change directory)
-경로 이동, 절대 경로와 상대 경로의 이동이 가능
+디렉토리 경로를 이동하는 명령어, 절대 경로와 상대 경로의 이동이 가능하다.
 ```
 $ cd /root/testdir
 $ ls 
@@ -142,7 +148,7 @@ $ pwd
 ```
 
 ### ls(list)
-디렉토리 및 파일 목록 확인
+디렉토리 및 파일 목록 확인하는 명령어. -a 모든 목록 출력과 -l 리스트 출력등의 옵션이 있다.
 ```
 $ ls
 mydir  testdir
@@ -223,9 +229,11 @@ mydir1  mydir2  myfile1  testdir
 ```
 
 ### echo, cat (concatenate)
-"echo" 문자열을 출력해주는 명령어, > 와 함께 사용하여 파일을 생성하거나 내용을 변경할 수 있다.
+"echo" : 문자열을 출력해주는 명령어, > 와 함께 사용하여 파일을 생성하거나 내용을 변경할 수 있다.
 
-"cat" 파일을 내용을 출력하는데 사용하는 명령어, 파일의 내용을 합치거나, 새로운 파일을 만들때도 사용한다.
+"cat" : 파일을 내용을 출력하는데 사용하는 명령어, 파일의 내용을 합치거나, 새로운 파일을 만들때도 사용한다.
+
+"redirection" ('>', '>>') : 스트림의 방향을 조정하는 명령어, "명령 > 파일" 명령의 결과를 파일로 저장한다.
 ```
 $ echo "hello"
 hello
@@ -238,5 +246,129 @@ $ echo "world" > world.txt
 $ cat world.txt
 world
 
+$ cat hello.txt world.txt
+hello
+world
+
+$ cat hello.txt world.txt
+hello
+world
+
+$ cat hello.txt world.txt  > helloworld.txt
+$ cat helloworld.txt
+hello
+world
+
 ```
- 
+
+### head
+파일의 앞부분을 출력하는 명령어 , - 옵션으로 설정된 라인만큼을 출력한다. 설정하지 않을 경우 10줄을 출력한다.
+```
+$ for i in {1..100}; do echo $i >> example.txt ; done
+
+$ head example.txt
+
+$ head example.txt
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+$ head  -5 example.txt
+1
+2
+3
+4
+5
+```
+
+### tail
+파일을 뒷부분을 출력하는 명령어, - 옵션으로 설정된 라인만큼을 출력한다. 설정하지 않을 경우 10줄을 출력한다. -f 옵션은 파일이 변경되면 실시간으로 내용을 업데이트한다.
+```
+$ tail example.txt
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+
+$ tail -5 example.txt
+96
+97
+98
+99
+100
+
+$ tail -f example.txt
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+```
+
+### find
+파일이나 디렉토리를 검색하는 명령어, 디렉토리 경로에서 파일이름 확장자와 같은 검색 조건으로 검색한다.
+-exec 옵션으로 다른 명령어와 함께 사용이 가능하다.
+```
+$ find ./ -name "test1"
+./testdir/test1
+
+$ find ./ -name "*.txt"
+./world.txt
+./helloworld.txt
+./hello.txt
+./example.txt
+
+$ find ./ -type d
+./
+./mydir2
+./.ssh
+./mydir1
+./.cache
+./testdir
+./testdir/test4
+./testdir/test8
+./testdir/test5
+./testdir/test2
+./testdir/test3
+./testdir/test7
+./testdir/test10
+./testdir/test1
+./testdir/test6
+./testdir/test9
+
+$ find ./ -type f
+./.ssh/config
+./.ssh/id_rsa
+./.ssh/authorized_keys
+./myfile1
+./.bashrc
+./.profile
+./world.txt
+./.vimrc
+./.cache/motd.legal-displayed
+./helloworld.txt
+./hello.txt
+./example.txt
+./.hushlogin
+
+$ find ./ -name "*.txt" -exec rm -f {} \;
+$ find ./ -name "*.txt"
+```
