@@ -144,7 +144,7 @@ $ pwd
 ### ls(list)
 디렉토리 및 파일 목록 확인
 ```
-ls
+$ ls
 mydir  testdir
 
 $ ls -l
@@ -170,18 +170,73 @@ drwxr-xr-x 12 root root 4096 Oct  7 08:57 testdir
 ```
 
 ### cp(copy)
-파일 혹은 디렉토리를 복사, 디렉토리를 복사할때는 -r 옵션을 주어야함
+파일 혹은 디렉토리를 복사하는데 사용하는 명령어, 디렉토리를 복사할때는 -r 옵션을 주어 사용한다.
+```
+$ cp mydir mydir1
+cp: omitting directory 'mydir'
 
+$ cp -r mydir mydir1
+$ cp -r mydir mydir2
+
+$ ls
+mydir  mydir1  mydir2 testdir
+```
 
 ### mv(move)
+파일 혹은 디렉토리 이동하는데 사용하는 명령어, 이름을 변경하는 용도로 사용한다.
+```
+$ mv mydir mydir3
 
-
-
+$ ls
+mydir1  mydir2  mydir3  testdir
+```
 
 ### touch
-파일이나 디렉토리의 최근 업데이트 일자를 현재 시간으로 변경, 파일이나 디렉토리가 존재하지 않으면 파일 생성
+파일이나 디렉토리의 최근 업데이트 일자를 현재 시간으로 변경하는 명령어 , 파일이나 디렉토리가 존재하지 않으면 파일 생성한다.
 ```
 $ touch myfile1
 $ touch myfile2
-mydir  myfile1  myfile2  testdir
+
+$ ls
+mydir1  mydir2  mydir3  myfile1  myfile2  testdir
+
+$ ls -al myfile1
+-rw-r--r-- 1 root root 0 Oct  8 08:23 myfile1
+
+$ touch myfile1
+
+$ ls -al myfile1
+-rw-r--r-- 1 root root 0 Oct  8 08:24 myfile1
 ```
+
+### rm (remove)
+파일이나 디렉토리를 삭제하는데 사용하는 명령어, 디렉토리를 삭제할떄는 -r 옵션을 주고 사용한다. -f 옵션은 삭제여부를 묻지않고 삭제한다.
+```
+$ rm mydir3
+rm: cannot remove 'mydir3': Is a directory
+
+$ rm -rf mydir3
+mydir1  mydir2  myfile1  myfile2  testdir
+
+$ rm -f myfile2
+mydir1  mydir2  myfile1  testdir
+```
+
+### echo, cat (concatenate)
+"echo" 문자열을 출력해주는 명령어, > 와 함께 사용하여 파일을 생성하거나 내용을 변경할 수 있다.
+
+"cat" 파일을 내용을 출력하는데 사용하는 명령어, 파일의 내용을 합치거나, 새로운 파일을 만들때도 사용한다.
+```
+$ echo "hello"
+hello
+
+$ echo "hello" > hello.txt
+$ cat hello.txt
+hello
+
+$ echo "world" > world.txt
+$ cat world.txt
+world
+
+```
+ 
