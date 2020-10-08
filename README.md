@@ -372,3 +372,15 @@ $ find ./ -type f
 $ find ./ -name "*.txt" -exec rm -f {} \;
 $ find ./ -name "*.txt"
 ```
+
+
+### man(Manual pager utils)
+명령어의 사용법이나 매뉴얼을 보는 명령어
+```
+$ man cat
+NAME 
+        cat - concatenate files and print on the standard output
+
+SYNOPSIS
+        cat [OPTION] ...    [FILE] ... 
+```
