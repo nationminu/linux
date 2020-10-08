@@ -15,7 +15,52 @@ http://mirror.kakao.com/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-DVD-2003.iso
 ![page of centos](./img/mirror.png)
 
 ---
+## VMware 설정
 
+---
+## Virtualbox 설정
+
+---
+## Centos 설치
+
+1. 이미지를 넣고 부팅하고 설치 화면에서 "Install Centos 7"을 선택
+
+![step](./img/1.png)
+
+2. 언어선택에서 사용하고자 하는 언어 선택(한국어)
+
+![step](./img/2.png)
+
+3. 설치 요약 화면
+
+![step](./img/3.png)
+
+4. 설치 대상 선택 후 완료 클릭시 파티션 자동 설정
+
+![step](./img/4.png)
+
+* 필요시 파티션을 수동으로 설정 가능(Optional)
+
+/boot, /home, swap, root 등 파티션을 수동으로 설정후 완료 클릭
+
+![step](./img/4-1.png) 
+![step](./img/4-2.png)
+![step](./img/4-3.png)
+![step](./img/4-4.png)
+
+5. 설치할 소프트웨어를 선택
+
+![step](./img/5.png)
+![step](./img/5-1.png)
+![step](./img/5-2.png)
+![step](./img/5-3.png)
+![step](./img/5-4.png)
+![step](./img/5-5.png)
+![step](./img/5-6.png)
+
+
+
+---
 
 ## 리눅스 명령어
 
